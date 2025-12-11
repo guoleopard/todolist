@@ -139,12 +139,14 @@ onMounted(() => {
   padding-bottom: 80px;
   min-height: 100vh;
   background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-title {
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
+  margin: 20px 0;
   font-size: 24px;
 }
 
@@ -152,6 +154,7 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
+  flex: 1;
 }
 
 .quadrant {
@@ -159,6 +162,9 @@ onMounted(() => {
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .urgent-important {
@@ -195,7 +201,7 @@ onMounted(() => {
 }
 
 .todo-list {
-  max-height: 200px;
+  flex: 1;
   overflow-y: auto;
 }
 
