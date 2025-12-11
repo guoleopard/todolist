@@ -3,59 +3,67 @@
     <h1 style="font-size: 24px; margin-bottom: 20px; text-align: center;">我的待办</h1>
     
     <div class="quadrant-container">
-      <div class="quadrant-card">
+      <div class="quadrant-card" style="display: flex; flex-direction: column; height: 100%;">
         <div class="quadrant-title">着急重要</div>
-        <div v-for="todo in todos.filter(t => t.quadrant === 1)" :key="todo.id" class="todo-item">
-          <div class="todo-content">
-            <div class="todo-title">{{ todo.title }}</div>
-            <div class="todo-desc">{{ todo.desc }}</div>
+        <div style="flex: 1; overflow-y: auto;">
+          <div v-for="todo in todos.filter(t => t.quadrant === 1)" :key="todo.id" class="todo-item">
+            <div class="todo-content">
+              <div class="todo-title">{{ todo.title }}</div>
+              <div class="todo-desc">{{ todo.desc }}</div>
+            </div>
+            <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
           </div>
-          <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
-        </div>
-        <div v-if="!todos.filter(t => t.quadrant === 1).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
-          暂无待办
+          <div v-if="!todos.filter(t => t.quadrant === 1).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
+            暂无待办
+          </div>
         </div>
       </div>
 
-      <div class="quadrant-card">
+      <div class="quadrant-card" style="display: flex; flex-direction: column; height: 100%;">
         <div class="quadrant-title">着急不重要</div>
-        <div v-for="todo in todos.filter(t => t.quadrant === 2)" :key="todo.id" class="todo-item">
-          <div class="todo-content">
-            <div class="todo-title">{{ todo.title }}</div>
-            <div class="todo-desc">{{ todo.desc }}</div>
+        <div style="flex: 1; overflow-y: auto;">
+          <div v-for="todo in todos.filter(t => t.quadrant === 2)" :key="todo.id" class="todo-item">
+            <div class="todo-content">
+              <div class="todo-title">{{ todo.title }}</div>
+              <div class="todo-desc">{{ todo.desc }}</div>
+            </div>
+            <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
           </div>
-          <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
-        </div>
-        <div v-if="!todos.filter(t => t.quadrant === 2).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
-          暂无待办
+          <div v-if="!todos.filter(t => t.quadrant === 2).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
+            暂无待办
+          </div>
         </div>
       </div>
 
-      <div class="quadrant-card">
+      <div class="quadrant-card" style="display: flex; flex-direction: column; height: 100%;">
         <div class="quadrant-title">不着急重要</div>
-        <div v-for="todo in todos.filter(t => t.quadrant === 3)" :key="todo.id" class="todo-item">
-          <div class="todo-content">
-            <div class="todo-title">{{ todo.title }}</div>
-            <div class="todo-desc">{{ todo.desc }}</div>
+        <div style="flex: 1; overflow-y: auto;">
+          <div v-for="todo in todos.filter(t => t.quadrant === 3)" :key="todo.id" class="todo-item">
+            <div class="todo-content">
+              <div class="todo-title">{{ todo.title }}</div>
+              <div class="todo-desc">{{ todo.desc }}</div>
+            </div>
+            <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
           </div>
-          <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
-        </div>
-        <div v-if="!todos.filter(t => t.quadrant === 3).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
-          暂无待办
+          <div v-if="!todos.filter(t => t.quadrant === 3).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
+            暂无待办
+          </div>
         </div>
       </div>
 
-      <div class="quadrant-card">
+      <div class="quadrant-card" style="display: flex; flex-direction: column; height: 100%;">
         <div class="quadrant-title">不着急不重要</div>
-        <div v-for="todo in todos.filter(t => t.quadrant === 4)" :key="todo.id" class="todo-item">
-          <div class="todo-content">
-            <div class="todo-title">{{ todo.title }}</div>
-            <div class="todo-desc">{{ todo.desc }}</div>
+        <div style="flex: 1; overflow-y: auto;">
+          <div v-for="todo in todos.filter(t => t.quadrant === 4)" :key="todo.id" class="todo-item">
+            <div class="todo-content">
+              <div class="todo-title">{{ todo.title }}</div>
+              <div class="todo-desc">{{ todo.desc }}</div>
+            </div>
+            <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
           </div>
-          <div class="todo-delete" @click="deleteTodo(todo.id)">✕</div>
-        </div>
-        <div v-if="!todos.filter(t => t.quadrant === 4).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
-          暂无待办
+          <div v-if="!todos.filter(t => t.quadrant === 4).length" style="text-align: center; color: #999; font-size: 14px; padding: 20px 0;">
+            暂无待办
+          </div>
         </div>
       </div>
     </div>
