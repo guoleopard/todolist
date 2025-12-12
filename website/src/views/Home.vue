@@ -1,6 +1,9 @@
 <template>
   <div class="page-container">
-    <h1 style="font-size: 24px; margin-bottom: 20px; text-align: center;">我的待办</h1>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h1 style="font-size: 24px; text-align: center;">我的待办</h1>
+      <button class="logout-btn" @click="handleLogout">退出登录</button>
+    </div>
     
     <div class="quadrant-container">
       <div class="quadrant-card" style="display: flex; flex-direction: column; height: 100%;">
@@ -112,7 +115,9 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const showModal = ref(false)
 const newTodo = ref({
   title: '',
@@ -154,10 +159,29 @@ const deleteTodo = (id) => {
   saveTodos()
 }
 
+const handleLogout = () => {
+  localStorage.removeItem('isLoggedIn')
+  localStorage.removeItem('todos')
+  router.push('/login')
+}
+
 onMounted(() => {
   loadTodos()
 })
 </script>
 
 <style>
+.logout-btn {
+  padding: 0.5rem 1rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.logout-btn:hover {
+  background: #c82333;
+}
 </style>
