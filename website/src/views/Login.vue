@@ -182,7 +182,7 @@ const drawCaptcha = () => {
   const chars = captchaText.value.split('')
   chars.forEach((char, index) => {
     ctx.save()
-    const x = canvas.width / 2 - 30 + index * 30
+    const x = 20+ index * 20
     const y = canvas.height / 2
     ctx.translate(x, y)
     ctx.rotate((Math.random() - 0.5) * 0.5)
