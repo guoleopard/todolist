@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view />
-    <Tabbar />
+    <Tabbar v-if="$route.path !== '/login'" />
   </div>
 </template>
 

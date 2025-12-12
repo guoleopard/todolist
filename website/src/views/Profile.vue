@@ -28,6 +28,9 @@
       <button @click="clearAll" class="action-btn danger-btn">
         清空所有
       </button>
+      <button @click="logout" class="action-btn logout-btn">
+        退出登录
+      </button>
     </div>
 
     <div class="category-stats">
@@ -66,6 +69,9 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const todos = ref([]);
 
@@ -104,10 +110,15 @@ const clearCompleted = () => {
 };
 
 const clearAll = () => {
-  if (confirm('确定要清空所有待办事项吗？')) {
+  if (confirm('确定要清空所有待办事项吗？此操作不可恢复！')) {
     localStorage.removeItem('todos');
     loadTodos();
   }
+};
+
+const logout = () => {
+  localStorage.removeItem('isLoggedIn');
+  router.push('/login');
 };
 
 onMounted(() => {
@@ -179,6 +190,10 @@ onMounted(() => {
 
 .danger-btn {
   background: #ff4757;
+}
+
+.logout-btn {
+  background: #95a5a6;
 }
 
 .category-stats {
