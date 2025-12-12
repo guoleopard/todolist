@@ -43,6 +43,12 @@
           清空
         </button>
       </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-top: 12px;">
+        <div style="font-size: 16px;">退出登录</div>
+        <button style="color: #dc3545; font-size: 16px; background: none; border: none; cursor: pointer;" @click="handleLogout">
+          退出
+        </button>
+      </div>
     </div>
 
     <nav class="nav-bar">
@@ -60,8 +66,16 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const todos = ref([])
+
+// 处理退出登录
+const handleLogout = () => {
+  localStorage.removeItem('isLoggedIn')
+  router.push('/login')
+}
 
 const loadTodos = () => {
   const saved = localStorage.getItem('todos')
