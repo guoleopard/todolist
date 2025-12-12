@@ -7,13 +7,18 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "keywords": ["todolist", "nodejs", "mysql"],
+  "keywords": [
+    "todolist",
+    "nodejs",
+    "mysql"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.13.2",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mysql2": "^3.6.0",
-    "cors": "^2.8.5"
+    "mysql2": "^3.6.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

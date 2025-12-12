@@ -12,6 +12,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get todos by user id
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const todos = await Todo.getAllByUserId(req.params.userId);
+    res.json(todos);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Get todo by id
 router.get('/:id', async (req, res) => {
   try {
@@ -28,11 +38,11 @@ router.get('/:id', async (req, res) => {
 // Create new todo
 router.post('/', async (req, res) => {
   try {
-    const { title, description, category } = req.body;
-    if (!title || !category) {
-      return res.status(400).json({ error: 'Title and category are required' });
+    const { title, description, category, user_id } = req.body;
+    if (!title || !category || !user_id) {
+      return res.status(400).json({ error: 'Title, category and user_id are required' });
     }
-    const id = await Todo.create(title, description || '', category);
+    const id = await Todo.create(title, description || '', category, user_id);
     const newTodo = await Todo.getById(id);
     res.status(201).json(newTodo);
   } catch (error) {
